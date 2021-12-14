@@ -10,10 +10,13 @@ namespace DAO
 {
     internal class Provider
     {
-        private static string _HOST = @"DESKTOP-K7NJL1D\SQLEXPRESS";
-        private static string _DB_NAME = "QuanLySinhVien";
-
-        static string ConnectionString = $"Data Source={_HOST};Initial Catalog={_DB_NAME};Integrated Security=True";
+        private static string _SERVER = @"ptud-csdl-1.database.windows.net";
+        private static int _PORT = 1433;
+        private static string _DATABASE = "pt-csdl-1";
+        private static string _USER = "trungnam0903";
+        private static string _PASSWORD = "Trungnam@0903";
+        private static string ConnectionString = $"Server=tcp:{_SERVER},{_PORT};Initial Catalog = {_DATABASE}; Persist Security Info=False;User ID = {_USER}; Password={_PASSWORD};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout = 30";
+        
         SqlConnection Connection { get; set; }
         public void Connect()
         {

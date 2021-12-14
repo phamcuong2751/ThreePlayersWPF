@@ -46,5 +46,11 @@
     <Compile Include="Provider.cs" />
     <Compile Include="SinhVienDAO.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{acbec79c-e3aa-4b39-9655-07831c8d8f04}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,13 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThreePlayers"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Loaded="Window_Loaded"
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
+        <TextBlock Text="QUẢN LÝ SINH VIÊN"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontWeight="Bold"
+                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"/>
         <Grid Margin="30">
+            
+
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="1.5*"/>
@@ -30,47 +38,50 @@
                 </Grid.ColumnDefinitions>
 
                 <DockPanel VerticalAlignment="Center" Width="300">
-                    <TextBlock Text="Mã SV" Width="60"/>
-                    <TextBox/>
+                    <TextBlock Text="Mã SV" Width="60" VerticalAlignment="Bottom"/>
+                    <TextBox Name="maSV"/>
                 </DockPanel>
 
                 <DockPanel VerticalAlignment="Center" Width="300"
                            Grid.Column="1">
-                    <TextBlock Text="Họ tên" Width="60"/>
-                    <TextBox/>
+                    <TextBlock Text="Họ tên" Width="60" VerticalAlignment="Bottom"/>
+                    <TextBox Name="hoTen"/>
                 </DockPanel>
-
 
                 <DockPanel VerticalAlignment="Center" Width="300"
                            Grid.Row="1">
-                    <TextBlock Text="Đại chỉ" Width="60"/>
-                    <TextBox/>
+                    <TextBlock Text="Đại chỉ" Width="60" VerticalAlignment="Bottom"/>
+                    <TextBox Name="diaChi"/>
                 </DockPanel>
 
                 <DockPanel VerticalAlignment="Center" Width="300"
                            Grid.Row="1" Grid.Column="1" >
-                    <TextBlock Text="Ngày sinh" Width="60"/>
-                    <DatePicker/>
+                    <TextBlock Text="Ngày sinh" Width="60" VerticalAlignment="Bottom"/>
+                    <DatePicker Name="dpNgaySinh"
+                                SelectedDate="{x:Static sys:DateTime.Now}"/>
                 </DockPanel>
 
 
                 <DockPanel VerticalAlignment="Center" Width="300"
-                           Grid.Row="2" Grid.Column="0" >
-                    <TextBlock Text="Phái" Width="60"/>
-                    <RadioButton Content="Nam" Style="{StaticResource MaterialDesignLightRadioButton}" />
-                    <RadioButton Content="Nữ" Style="{StaticResource MaterialDesignLightRadioButton}" 
+                           Grid.Row="2" Grid.Column="0">
+                    <TextBlock Text="Phái" Width="60" VerticalAlignment="Bottom"/>
+                    <RadioButton Name="phaiNu" GroupName="phai" Content="Nam" Style="{StaticResource MaterialDesignLightRadioButton}" />
+                    <RadioButton Name="phaiNam" GroupName="phai" Content="Nữ" Style="{StaticResource MaterialDesignLightRadioButton}" 
                                  Margin="10 0"/>
                 </DockPanel>
 
 
                 <DockPanel VerticalAlignment="Center" Width="300"
                            Grid.Row="2" Grid.Column="1" >
-                    <TextBlock Text="Ngành" Width="60" Margin="0 0 10 0"/>
+                    <TextBlock Text="Ngành" Width="60" VerticalAlignment="Bottom"/>
                     <ComboBox ItemsSource="{Binding}"
-                              Name="cbNganh">
+                              Name="cbNganh" SelectedIndex="0">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TENNGANH}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding MANGANH}"/>
+                                    <TextBlock Text="{Binding TENNGANH}"/>
+                                </StackPanel>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
@@ -85,7 +96,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Content="THÊM" Margin="20 0"/>
+                    <Button Content="THÊM" Margin="20 0"
+                            Click="Button_Them_Click"/>
                     <Button Content="XOÁ" Margin="20 0"
                             Grid.Column="1"/>
                     <Button Content="SỬA" Margin="20 0"

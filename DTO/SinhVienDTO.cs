@@ -45,7 +45,7 @@ namespace DTO
             set { _maNganh = value; }
         }
 
-        SinhVienDTO()
+        public SinhVienDTO()
         {
             _maSV = 0;
             _hoten = "";
