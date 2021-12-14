@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -72,6 +74,38 @@ namespace ThreePlayers
             {
                 MessageBox.Show("Insert Student Successful!");
             }
+
+        }
+
+        private void GridViewName_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            var dg = sender as DataGrid;
+            DataRowView row = dg.SelectedItems[0] as DataRowView;
+
+            maSV.Text = row["MASV"].ToString();
+            hoTen.Text = row["HOTEN"].ToString();
+            diaChi.Text = row["DIACHI"].ToString();
+
+            var str = row["NGAYSINH"].ToString();
+            DateTime birthday;
+            DateTime.TryParse(str, out birthday);
+            dpNgaySinh.SelectedDate = birthday;
+
+            var isPhaiNam = row["PHAI"].ToString();
+            if (isPhaiNam == "Nam")
+            {
+                phaiNam.IsChecked = true;
+            }
+            else
+            {
+                phaiNu.IsChecked = true;
+            }
+
+            cbNganh.SelectedIndex = int.Parse(row["MANGANH"].ToString()) - 1;
+        }
+
+        private void Button_Xoa_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

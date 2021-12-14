@@ -9,7 +9,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Loaded="Window_Loaded"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="MainWindow" Height="600" Width="1100">
     <Grid>
         <TextBlock Text="QUẢN LÝ SINH VIÊN"
                    HorizontalAlignment="Center"
@@ -99,7 +99,8 @@
                     <Button Content="THÊM" Margin="20 0"
                             Click="Button_Them_Click"/>
                     <Button Content="XOÁ" Margin="20 0"
-                            Grid.Column="1"/>
+                            Grid.Column="1"
+                            Click="Button_Xoa_Click"/>
                     <Button Content="SỬA" Margin="20 0"
                             Grid.Column="2"/>
                     <Button Content="THOÁT" Margin="20 0"
@@ -117,7 +118,8 @@
                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
                 <DataGrid Name="GridViewName" AutoGenerateColumns="True"
                           ItemsSource="{Binding}" Grid.Row="1"
-                          IsReadOnly="True">
+                          IsReadOnly="True"
+                          SelectedCellsChanged="GridViewName_SelectedCellsChanged">
 
                 </DataGrid>
             </Grid>

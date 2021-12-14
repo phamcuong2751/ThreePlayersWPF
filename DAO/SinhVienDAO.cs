@@ -59,5 +59,28 @@ namespace DAO
             }
             return nRow;
         }
+        public int DeleteSinhVien(string maSV)
+        {
+            Provider p = new Provider();
+            int nRow = 0;
+            try
+            {
+                string strSQL = "sp_DeleteSV";
+                p.Connect();
+                nRow = p.ExcecuteNonQuery(CommandType.StoredProcedure, strSQL,
+                        new SqlParameter { ParameterName = "@MASV", Value = maSV }
+                    );
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                p.DisConnect();
+            }
+            return nRow;
+        }
+
     }
 }

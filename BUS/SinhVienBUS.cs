@@ -18,8 +18,13 @@ namespace BUS
         }
         public int InsertSinhVien(SinhVienDTO sv)
         {
-            SinhVienDAO dao = new SinhVienDAO();
-            return dao.InsertSinhVien(sv);
+            SinhVienDAO svDAO = new SinhVienDAO();
+            return svDAO.InsertSinhVien(sv);
+        }
+        public int DeleteSinhVien(string maSV)
+        {
+            SinhVienDAO svDAO = new SinhVienDAO();
+            return svDAO.DeleteSinhVien(maSV);
         }
     }
 }
